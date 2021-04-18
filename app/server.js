@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const ducksRouter = require("./routes/ducks");
 
 require("dotenv").config();
 
@@ -16,6 +17,9 @@ connection.once("open", () => {
 
 app.use(cors());
 app.use(express.json());
+
+// TODO: maybe change this to just "/"
+app.use("/ducks", ducksRouter);
 
 app.listen(port, () => {
   console.log(`🚀 Server is running on port: ${port} 🚀`);
