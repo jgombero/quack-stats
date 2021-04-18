@@ -6,7 +6,7 @@ import NavigationBar from "./components/Navbar/Navbar";
 import DuckStats from "./components/DuckStats/DuckStats";
 import DuckForm from "./components/DuckForm/DuckForm";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <NavigationBar />
@@ -14,6 +14,6 @@ function App() {
       <Route path="/ducks" exact component={DuckStats} />
     </Router>
   );
-}
+};
 
 export default App;
