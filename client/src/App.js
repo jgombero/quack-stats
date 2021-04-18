@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./components/Navbar/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import DuckStats from "./components/DuckStats/DuckStats";
+import DuckForm from "./components/DuckForm/DuckForm";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <h1>Hello World!</h1>
+      <Route path="/" exact component={DuckForm} />
+      <Route path="/ducks" exact component={DuckStats} />
+    </Router>
   );
 }
 
