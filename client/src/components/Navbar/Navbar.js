@@ -1,28 +1,21 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Container, Navbar, Nav } from "react-bootstrap";
 
-const Navbar = () => {
+const NavigationBar = () => {
   return (
-    <section id="navbar">
-      <Container>
-        <div className="navbar-wrapper">
-          <Row>
-            <Col>
-              <Link to="/">
-               Form
-              </Link>
-            </Col>
-            <Col>
-              <Link to="/ducks">
-                Stats
-              </Link>
-            </Col>
-          </Row>
-        </div>
-      </Container>
+    <section id="navbar" className="">
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="/">Quack Stats</Navbar.Brand>
+          <Nav></Nav>
+          <Nav bg="dark" variant="dark" className="justify-content-end">
+            <Nav.Link href="/">Form</Nav.Link>
+            <Nav.Link href="/ducks">Stats</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
     </section>
   );
 };
 
-export default Navbar;
+export default NavigationBar;
