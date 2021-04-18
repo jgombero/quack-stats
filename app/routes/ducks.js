@@ -9,7 +9,6 @@ router.route("/").get((req, res) => {
 
 // TODO: Might need to make sure the data types are correct here
 router.route("/add").post((req, res) => {
-  console.log(req.body);
   const { time, food, park, location, duckQuantity, foodQuantity } = req.body;
 
   const newEntry = new Duck({ time, food, park, location, duckQuantity, foodQuantity });
