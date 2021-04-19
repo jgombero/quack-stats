@@ -68,7 +68,6 @@ const DuckForm = () => {
                 as="select"
                 value={state.timeFirstNumber}
                 onChange={(event) => onChangeHandler("timeFirstNumber", event)}
-                onBlur={(event) => onChangeHandler("timeFirstNumber", event)}
               >
                 {timeFirstNumbers.map((timeFirstNumber, index) => {
                   return <option key={index}>{timeFirstNumber}</option>;
@@ -80,7 +79,6 @@ const DuckForm = () => {
                 as="select"
                 value={state.timeSecondNumber}
                 onChange={(event) => onChangeHandler("timeSecondNumber", event)}
-                onBlur={(event) => onChangeHandler("timeSecondNumber", event)}
               >
                 {timeSecondNumbers.map((timeSecondNumber, index) => {
                   return <option key={index}>{timeSecondNumber}</option>;
@@ -92,7 +90,6 @@ const DuckForm = () => {
                 as="select"
                 value={state.timePeriod}
                 onChange={(event) => onChangeHandler("timePeriod", event)}
-                onBlur={(event) => onChangeHandler("timePeriod", event)}
               >
                 {timePeriods.map((timePeriod, index) => {
                   return <option key={index}>{timePeriod}</option>;
@@ -109,7 +106,6 @@ const DuckForm = () => {
                 placeholder="Ex. Bread"
                 value={state.food}
                 onChange={(event) => onChangeHandler("food", event)}
-                onBlur={(event) => onChangeHandler("food", event)}
               />
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="formGridFoodQuantity">
@@ -120,7 +116,6 @@ const DuckForm = () => {
                 min={1}
                 value={state.foodQuantity}
                 onChange={(event) => onChangeHandler("foodQuantity", event)}
-                onBlur={(event) => onChangeHandler("foodQuantity", event)}
               />
             </Form.Group>
           </Form.Row>
@@ -133,7 +128,6 @@ const DuckForm = () => {
                 placeholder="Ex. Queen Elizabeth"
                 value={state.park}
                 onChange={(event) => onChangeHandler("park", event)}
-                onBlur={(event) => onChangeHandler("park", event)}
               />
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="formGridParkLocation">
@@ -144,7 +138,6 @@ const DuckForm = () => {
                 placeholder="Ex. Vancouver, BC"
                 value={state.location}
                 onChange={(event) => onChangeHandler("location", event)}
-                onBlur={(event) => onChangeHandler("location", event)}
               />
             </Form.Group>
           </Form.Row>
@@ -158,7 +151,6 @@ const DuckForm = () => {
                 min={1}
                 value={state.duckQuantity}
                 onChange={(event) => onChangeHandler("duckQuantity", event)}
-                onBlur={(event) => onChangeHandler("duckQuantity", event)}
               />
             </Form.Group>
           </Form.Row>
