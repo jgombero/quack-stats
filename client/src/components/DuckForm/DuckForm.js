@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Jumbotron, Container, Form, Col, Button } from "react-bootstrap";
+import { Container, Form, Col, Button } from "react-bootstrap";
 import {
   timeFirstNumbers,
   timeSecondNumbers,
   timePeriods,
   defaultState,
+  title,
+  subtitle,
 } from "./constants/constants";
+import Header from "../Header/Header";
 
 const DuckForm = () => {
   const [state, setState] = useState(defaultState);
@@ -53,12 +56,7 @@ const DuckForm = () => {
 
   return (
     <>
-      <Jumbotron>
-        <Container>
-          <h1>Quack Form</h1>
-          <h5>Please enter your duck feeding data.</h5>
-        </Container>
-      </Jumbotron>
+      <Header title={title} subtitle={subtitle} />
       <Container>
         <Form onSubmit={(event) => onSubmitHandler(event)}>
           <Form.Label>
@@ -168,7 +166,9 @@ const DuckForm = () => {
             </Form.Group>
           </Form.Row>
           <Button type="submit">Submit</Button>
-          <Form.Text className="text-muted">All fields marked with * are required</Form.Text>
+          <Form.Text className="text-muted">
+            All fields marked with <span style={{ color: "red" }}>*</span> are required
+          </Form.Text>
         </Form>
       </Container>
     </>

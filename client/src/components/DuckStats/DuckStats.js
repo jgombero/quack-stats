@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Jumbotron } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import MaterialTable from "material-table";
-import { tableIcons, columns } from "./constants/constants";
+import { tableIcons, columns, title, subtitle } from "./constants/constants";
+import Header from "../Header/Header";
 
 const DuckStats = () => {
   const [state, setState] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     setIsLoading(true);
     axios
@@ -23,12 +25,7 @@ const DuckStats = () => {
 
   return (
     <>
-      <Jumbotron>
-        <Container>
-          <h1>Quack Stats</h1>
-          <h5>Here are the latest statistics about duck feedings around the world!</h5>
-        </Container>
-      </Jumbotron>
+      <Header title={title} subtitle={subtitle} />
       <Container>
         {state.length > 0 && (
           <MaterialTable
