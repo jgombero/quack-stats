@@ -113,7 +113,7 @@ const DuckForm = () => {
               />
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="formGridFoodQuantity">
-              <Form.Label>Quantity</Form.Label>
+              <Form.Label>Quantity (In Grams)</Form.Label>
               <Form.Control
                 type="number"
                 placeholder={0}
