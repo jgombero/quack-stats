@@ -115,7 +115,6 @@ const DuckForm = () => {
             <Form.Group as={Col} md="4" controlId="formGridFoodQuantity">
               <Form.Label>Quantity</Form.Label>
               <Form.Control
-                require
                 type="number"
                 placeholder={0}
                 min={1}
