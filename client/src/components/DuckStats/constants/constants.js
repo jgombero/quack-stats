@@ -38,7 +38,7 @@ export const tableIcons = {
 export const columns = [
   { title: "Time", field: "time" },
   { title: "Food", field: "food" },
-  { title: "Food Quantity", field: "foodQuantity" },
+  { title: "Food Quantity (g)", field: "foodQuantity" },
   { title: "Park", field: "park" },
   { title: "Location", field: "location" },
   { title: "Duck Quantity", field: "duckQuantity" },
