@@ -61,7 +61,7 @@ const DuckForm = () => {
       </Jumbotron>
       <Container>
         <Form onSubmit={(event) => onSubmitHandler(event)}>
-          <Form.Label>Time</Form.Label>
+          <Form.Label>Time *</Form.Label>
           <Form.Row>
             <Form.Group as={Col} md="2" controlId="formGridTimeFirstNumber">
               <Form.Control
@@ -102,7 +102,7 @@ const DuckForm = () => {
           </Form.Row>
           <Form.Row>
             <Form.Group as={Col} md="4" controlId="formGridFood">
-              <Form.Label>Food</Form.Label>
+              <Form.Label>Food *</Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -113,7 +113,7 @@ const DuckForm = () => {
               />
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="formGridFoodQuantity">
-              <Form.Label>Quantity (In Grams)</Form.Label>
+              <Form.Label>Quantity (In Grams) *</Form.Label>
               <Form.Control
                 type="number"
                 placeholder={0}
@@ -126,7 +126,7 @@ const DuckForm = () => {
           </Form.Row>
           <Form.Row>
             <Form.Group as={Col} md="4" controlId="formGridParkName">
-              <Form.Label>Park Name</Form.Label>
+              <Form.Label>Park Name *</Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -137,7 +137,7 @@ const DuckForm = () => {
               />
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="formGridParkLocation">
-              <Form.Label>Location</Form.Label>
+              <Form.Label>Location *</Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -150,7 +150,7 @@ const DuckForm = () => {
           </Form.Row>
           <Form.Row>
             <Form.Group as={Col} md="2" controlId="formGridDuckQuantity">
-              <Form.Label>Duck Count</Form.Label>
+              <Form.Label># Ducks Fed *</Form.Label>
               <Form.Control
                 required
                 type="number"
