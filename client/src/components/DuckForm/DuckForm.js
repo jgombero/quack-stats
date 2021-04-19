@@ -61,7 +61,9 @@ const DuckForm = () => {
       </Jumbotron>
       <Container>
         <Form onSubmit={(event) => onSubmitHandler(event)}>
-          <Form.Label>Time *</Form.Label>
+          <Form.Label>
+            Time<span style={{ color: "red" }}>*</span>
+          </Form.Label>
           <Form.Row>
             <Form.Group as={Col} md="2" controlId="formGridTimeFirstNumber">
               <Form.Control
@@ -99,7 +101,9 @@ const DuckForm = () => {
           </Form.Row>
           <Form.Row>
             <Form.Group as={Col} md="4" controlId="formGridFood">
-              <Form.Label>Food *</Form.Label>
+              <Form.Label>
+                Food<span style={{ color: "red" }}>*</span>
+              </Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -109,7 +113,9 @@ const DuckForm = () => {
               />
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="formGridFoodQuantity">
-              <Form.Label>Quantity (In Grams) *</Form.Label>
+              <Form.Label>
+                Quantity (In Grams)<span style={{ color: "red" }}>*</span>
+              </Form.Label>
               <Form.Control
                 type="number"
                 placeholder={0}
@@ -117,11 +123,14 @@ const DuckForm = () => {
                 value={state.foodQuantity}
                 onChange={(event) => onChangeHandler("foodQuantity", event)}
               />
+              <Form.Text className="text-muted">Tip: An average loaf of bread is 800g</Form.Text>
             </Form.Group>
           </Form.Row>
           <Form.Row>
             <Form.Group as={Col} md="4" controlId="formGridParkName">
-              <Form.Label>Park Name *</Form.Label>
+              <Form.Label>
+                Park Name<span style={{ color: "red" }}>*</span>
+              </Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -131,7 +140,9 @@ const DuckForm = () => {
               />
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="formGridParkLocation">
-              <Form.Label>Location *</Form.Label>
+              <Form.Label>
+                Location<span style={{ color: "red" }}>*</span>
+              </Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -143,7 +154,9 @@ const DuckForm = () => {
           </Form.Row>
           <Form.Row>
             <Form.Group as={Col} md="2" controlId="formGridDuckQuantity">
-              <Form.Label># Ducks Fed *</Form.Label>
+              <Form.Label>
+                # of Ducks Fed<span style={{ color: "red" }}>*</span>
+              </Form.Label>
               <Form.Control
                 required
                 type="number"
@@ -155,6 +168,7 @@ const DuckForm = () => {
             </Form.Group>
           </Form.Row>
           <Button type="submit">Submit</Button>
+          <Form.Text className="text-muted">All fields marked with * are required</Form.Text>
         </Form>
       </Container>
     </>
