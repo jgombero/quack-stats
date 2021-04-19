@@ -12,3 +12,7 @@ export const defaultState = {
   duckQuantity: 0,
   foodQuantity: 0,
 };
+
+export const title = "Quack Form";
+
+export const subtitle = "Please enter your duck feeding data.";
