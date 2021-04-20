@@ -8,6 +8,7 @@ import "../../styles/spinner.css";
 import CustomSpinner from "../CustomSpinner/CustomSpinner";
 
 const DuckData = () => {
+  // --- State Hooks --- //
   const [state, setState] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
