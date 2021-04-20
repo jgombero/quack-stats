@@ -18,7 +18,6 @@ connection.once("open", () => {
 app.use(cors());
 app.use(express.json());
 
-// TODO: maybe change this to just "/"
 app.use("/ducks", ducksRouter);
 
 app.listen(port, () => {

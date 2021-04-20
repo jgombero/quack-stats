@@ -7,7 +7,6 @@ router.route("/").get((req, res) => {
     .catch((e) => res.status(400).json(`Error: ${e}`));
 });
 
-// TODO: Might need to make sure the data types are correct here
 router.route("/add").post((req, res) => {
   const { time, food, park, location, duckQuantity, foodQuantity } = req.body;
 
