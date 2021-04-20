@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Container, Form, Col, Button } from "react-bootstrap";
+import { Container, Form, Col, Button, Modal } from "react-bootstrap";
 import {
   timeFirstNumbers,
   timeSecondNumbers,
@@ -14,6 +14,10 @@ import Header from "../Header/Header";
 const DuckForm = () => {
   const [state, setState] = useState(defaultState);
   const [isLoading, setIsLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleCloseSuccess = () => setShowSuccess(false);
+  const handleShowSuccess = () => setShowSuccess(true);
 
   const resetState = (defaultState) => {
     setState(defaultState);
@@ -38,11 +42,10 @@ const DuckForm = () => {
       foodQuantity: state.foodQuantity,
     };
 
-    console.log("Duck Data on Submit: ", duckData);
-
     axios
       .post("http://localhost:8000/ducks/add", duckData)
       .then((res) => {
+        handleShowSuccess();
         resetState(defaultState);
         setIsLoading(false);
 
@@ -170,6 +173,17 @@ const DuckForm = () => {
             All fields marked with <span style={{ color: "red" }}>*</span> are required
           </Form.Text>
         </Form>
+        <Modal show={showSuccess} onHide={handleCloseSuccess}>
+          <Modal.Header closeButton>
+            <Modal.Title>Submission Quackccessful!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>You're response fits the bill!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleCloseSuccess}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </>
   );
