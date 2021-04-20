@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Container, Form, Col, Button, Modal } from "react-bootstrap";
+import { Container, Form, Col, Button } from "react-bootstrap";
 import {
   timeFirstNumbers,
   timeSecondNumbers,
@@ -8,17 +8,24 @@ import {
   defaultState,
   title,
   subtitle,
+  modalTitle,
+  modalSubtext,
 } from "./constants/constants";
 import Header from "../Header/Header";
 import CustomSpinner from "../CustomSpinner/CustomSpinner";
+import Asterisk from "./Asterisk";
+import CustomModal from "./CustomModal";
 
 const DuckForm = () => {
+  // --- State Hooks --- //
   const [state, setState] = useState(defaultState);
   const [isLoading, setIsLoading] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const handleCloseSuccess = () => setShowSuccess(false);
-  const handleShowSuccess = () => setShowSuccess(true);
+  // --- Helper Functions --- //
+  const handleCloseSuccessModal = () => setShowSuccessModal(false);
+
+  const handleShowSuccessModal = () => setShowSuccessModal(true);
 
   const resetState = (defaultState) => {
     setState(defaultState);
@@ -48,7 +55,7 @@ const DuckForm = () => {
       axios
         .post("http://localhost:8000/ducks/add", duckData)
         .then((res) => {
-          handleShowSuccess();
+          handleShowSuccessModal();
           resetState(defaultState);
           setIsLoading(false);
         })
@@ -71,7 +78,7 @@ const DuckForm = () => {
         <Form onSubmit={(event) => onSubmitHandler(event)}>
           <Form.Label>
             Time
-            <span style={{ color: "red" }}>*</span>
+            <Asterisk />
           </Form.Label>
           <Form.Row>
             <Form.Group as={Col} md="2" controlId="formGridTimeFirstNumber">
@@ -111,7 +118,8 @@ const DuckForm = () => {
           <Form.Row>
             <Form.Group as={Col} md="4" controlId="formGridFood">
               <Form.Label>
-                Food<span style={{ color: "red" }}>*</span>
+                Food
+                <Asterisk />
               </Form.Label>
               <Form.Control
                 required
@@ -123,7 +131,8 @@ const DuckForm = () => {
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="formGridFoodQuantity">
               <Form.Label>
-                Quantity (In Grams)<span style={{ color: "red" }}>*</span>
+                Quantity (In Grams)
+                <Asterisk />
               </Form.Label>
               <Form.Control
                 type="number"
@@ -138,7 +147,8 @@ const DuckForm = () => {
           <Form.Row>
             <Form.Group as={Col} md="4" controlId="formGridParkName">
               <Form.Label>
-                Park Name<span style={{ color: "red" }}>*</span>
+                Park Name
+                <Asterisk />
               </Form.Label>
               <Form.Control
                 required
@@ -150,7 +160,8 @@ const DuckForm = () => {
             </Form.Group>
             <Form.Group as={Col} md="4" controlId="formGridParkLocation">
               <Form.Label>
-                Location<span style={{ color: "red" }}>*</span>
+                Location
+                <Asterisk />
               </Form.Label>
               <Form.Control
                 required
@@ -164,7 +175,8 @@ const DuckForm = () => {
           <Form.Row>
             <Form.Group as={Col} md="2" controlId="formGridDuckQuantity">
               <Form.Label>
-                # of Ducks Fed<span style={{ color: "red" }}>*</span>
+                # of Ducks Fed
+                <Asterisk />
               </Form.Label>
               <Form.Control
                 required
@@ -178,20 +190,15 @@ const DuckForm = () => {
           </Form.Row>
           <Button type="submit">Submit</Button>
           <Form.Text className="text-muted">
-            All fields marked with <span style={{ color: "red" }}>*</span> are required
+            All fields marked with <Asterisk /> are required
           </Form.Text>
         </Form>
-        <Modal show={showSuccess} onHide={handleCloseSuccess}>
-          <Modal.Header closeButton>
-            <Modal.Title>Submission Quack-ccessful!</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Your response fits the bill!</Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={handleCloseSuccess}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+        <CustomModal
+          title={modalTitle}
+          subtext={modalSubtext}
+          handleClose={handleCloseSuccessModal}
+          show={showSuccessModal}
+        />
       </Container>
     </>
   );
