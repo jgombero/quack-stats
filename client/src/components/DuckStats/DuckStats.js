@@ -4,6 +4,8 @@ import { Container } from "react-bootstrap";
 import MaterialTable from "material-table";
 import { tableIcons, columns, title, subtitle } from "./constants/constants";
 import Header from "../Header/Header";
+import "../../styles/spinner.css";
+import CustomSpinner from "../CustomSpinner/CustomSpinner";
 
 const DuckStats = () => {
   const [state, setState] = useState([]);
@@ -11,17 +13,24 @@ const DuckStats = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    axios
-      .get("http://localhost:8000/ducks")
-      .then((res) => {
-        setState([...res.data]);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        // TODO: Handle error better
-        console.error(`Error: ${error}`);
-      });
+    setTimeout(() => {
+      axios
+        .get("http://localhost:8000/ducks")
+        .then((res) => {
+          setState([...res.data]);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          // TODO: Handle error better
+          console.error(`Error: ${error}`);
+          setIsLoading(false);
+        });
+    }, 1000);
   }, []);
+
+  if (isLoading) {
+    return <CustomSpinner />;
+  }
 
   return (
     <>

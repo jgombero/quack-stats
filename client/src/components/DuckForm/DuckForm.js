@@ -10,6 +10,7 @@ import {
   subtitle,
 } from "./constants/constants";
 import Header from "../Header/Header";
+import CustomSpinner from "../CustomSpinner/CustomSpinner";
 
 const DuckForm = () => {
   const [state, setState] = useState(defaultState);
@@ -42,20 +43,25 @@ const DuckForm = () => {
       foodQuantity: state.foodQuantity,
     };
 
-    axios
-      .post("http://localhost:8000/ducks/add", duckData)
-      .then((res) => {
-        handleShowSuccess();
-        resetState(defaultState);
-        setIsLoading(false);
-
-        // TODO: Render a modal confirming that the data was received
-      })
-      .catch((error) => {
-        // TODO: Handle errors better
-        console.error(`Error: ${error}`);
-      });
+    setTimeout(() => {
+      axios
+        .post("http://localhost:8000/ducks/add", duckData)
+        .then((res) => {
+          handleShowSuccess();
+          resetState(defaultState);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          // TODO: Handle errors better
+          console.error(`Error: ${error}`);
+          setIsLoading(false);
+        });
+    }, 1000);
   };
+
+  if (isLoading) {
+    return <CustomSpinner />;
+  }
 
   return (
     <>
@@ -63,7 +69,8 @@ const DuckForm = () => {
       <Container>
         <Form onSubmit={(event) => onSubmitHandler(event)}>
           <Form.Label>
-            Time<span style={{ color: "red" }}>*</span>
+            Time
+            <span style={{ color: "red" }}>*</span>
           </Form.Label>
           <Form.Row>
             <Form.Group as={Col} md="2" controlId="formGridTimeFirstNumber">
@@ -175,9 +182,9 @@ const DuckForm = () => {
         </Form>
         <Modal show={showSuccess} onHide={handleCloseSuccess}>
           <Modal.Header closeButton>
-            <Modal.Title>Submission Quackccessful!</Modal.Title>
+            <Modal.Title>Submission Quack-ccessful!</Modal.Title>
           </Modal.Header>
-          <Modal.Body>You're response fits the bill!</Modal.Body>
+          <Modal.Body>Your response fits the bill!</Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={handleCloseSuccess}>
               Close
