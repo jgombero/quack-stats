@@ -44,6 +44,6 @@ export const columns = [
   { title: "Duck Quantity", field: "duckQuantity" },
 ];
 
-export const title = "Quack Stats";
+export const title = "Quack Data";
 
-export const subtitle = "Here are the latest statistics about duck feedings around the world!";
+export const subtitle = "Here's the latest data about duck feedings around the world!";

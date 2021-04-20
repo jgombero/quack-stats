@@ -7,12 +7,13 @@ import Header from "../Header/Header";
 import "../../styles/spinner.css";
 import CustomSpinner from "../CustomSpinner/CustomSpinner";
 
-const DuckStats = () => {
+const DuckData = () => {
   const [state, setState] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
+    // SetTimeout used here just to show off the spinner :)
     setTimeout(() => {
       axios
         .get("http://localhost:8000/ducks")
@@ -49,4 +50,4 @@ const DuckStats = () => {
   );
 };
 
-export default DuckStats;
+export default DuckData;

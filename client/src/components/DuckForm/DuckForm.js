@@ -43,6 +43,7 @@ const DuckForm = () => {
       foodQuantity: state.foodQuantity,
     };
 
+    // SetTimeout used here just to show off the spinner :)
     setTimeout(() => {
       axios
         .post("http://localhost:8000/ducks/add", duckData)

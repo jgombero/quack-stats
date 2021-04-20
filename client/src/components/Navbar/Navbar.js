@@ -10,7 +10,7 @@ const NavigationBar = () => {
           <Nav></Nav>
           <Nav bg="dark" variant="dark" className="justify-content-end">
             <Nav.Link href="/">Form</Nav.Link>
-            <Nav.Link href="/ducks">Stats</Nav.Link>
+            <Nav.Link href="/ducks">Data</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
