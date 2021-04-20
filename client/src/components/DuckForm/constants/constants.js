@@ -16,3 +16,7 @@ export const defaultState = {
 export const title = "Quack Form";
 
 export const subtitle = "Please enter your duck feeding data.";
+
+export const modalTitle = "Submission Quack-ccessful!";
+
+export const modalSubtext = "Your response fits the bill!";
