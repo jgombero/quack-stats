@@ -19,7 +19,7 @@ const DuckData = () => {
       axios
         .get("http://localhost:8000/ducks")
         .then((res) => {
-          setState([...res.data]);
+          setState([...res.data.reverse()]);
           setIsLoading(false);
         })
         .catch((error) => {
