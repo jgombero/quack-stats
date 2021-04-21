@@ -6,8 +6,8 @@ const Header = ({ title, subtitle }) => {
     <Jumbotron>
       <Container>
         <header>
-          <h1>{title}</h1>
-          <h5>{subtitle}</h5>
+          <h1 className="title">{title}</h1>
+          <h5 className="title">{subtitle}</h5>
         </header>
       </Container>
     </Jumbotron>

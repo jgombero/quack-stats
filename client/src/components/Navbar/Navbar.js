@@ -6,7 +6,9 @@ const NavigationBar = () => {
     <section id="navbar" className="">
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">Quack Stats</Navbar.Brand>
+          <Navbar.Brand className="title" href="/">
+            Quack Stats
+          </Navbar.Brand>
           <Nav></Nav>
           <Nav bg="dark" variant="dark" className="justify-content-end">
             <Nav.Link href="/">Form</Nav.Link>

@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/fonts.css";
 import NavigationBar from "./components/Navbar/Navbar";
 import DuckData from "./components/DuckData/DuckData";
 import DuckForm from "./components/DuckForm/DuckForm";
