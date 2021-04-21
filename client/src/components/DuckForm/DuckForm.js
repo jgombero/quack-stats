@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Container, Form, Col, Button } from "react-bootstrap";
 import {
-  timeFirstNumbers,
-  timeSecondNumbers,
+  timeHoursHand,
+  timeMinutesHand,
   timePeriods,
   defaultState,
   title,
@@ -42,7 +42,7 @@ const DuckForm = () => {
     event.preventDefault();
 
     const duckData = {
-      time: `${state.timeFirstNumber}:${state.timeSecondNumber} ${state.timePeriod}`,
+      time: `${state.timeHoursHand}:${state.timeMinutesHand} ${state.timePeriod}`,
       food: state.food,
       park: state.park,
       location: state.location,
@@ -81,25 +81,25 @@ const DuckForm = () => {
             <Asterisk />
           </Form.Label>
           <Form.Row>
-            <Form.Group as={Col} md="2" controlId="formGridTimeFirstNumber">
+            <Form.Group as={Col} md="2" controlId="formGridTimeHoursHand">
               <Form.Control
                 as="select"
-                value={state.timeFirstNumber}
-                onChange={(event) => onChangeHandler("timeFirstNumber", event)}
+                value={state.timeHoursHand}
+                onChange={(event) => onChangeHandler("timeHoursHand", event)}
               >
-                {timeFirstNumbers.map((timeFirstNumber, index) => {
-                  return <option key={index}>{timeFirstNumber}</option>;
+                {timeHoursHand.map((hour, index) => {
+                  return <option key={index}>{hour}</option>;
                 })}
               </Form.Control>
             </Form.Group>
-            <Form.Group as={Col} md="2" controlId="formGridTimeSecondNumber">
+            <Form.Group as={Col} md="2" controlId="formGridTimeMinutesHand">
               <Form.Control
                 as="select"
-                value={state.timeSecondNumber}
-                onChange={(event) => onChangeHandler("timeSecondNumber", event)}
+                value={state.timeMinutesHand}
+                onChange={(event) => onChangeHandler("timeMinutesHand", event)}
               >
-                {timeSecondNumbers.map((timeSecondNumber, index) => {
-                  return <option key={index}>{timeSecondNumber}</option>;
+                {timeMinutesHand.map((minute, index) => {
+                  return <option key={index}>{minute}</option>;
                 })}
               </Form.Control>
             </Form.Group>
