@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import useAxios from "axios-hooks";
 import { Container, Form, Col, Button } from "react-bootstrap";
 import {
   timeHoursHand,
@@ -23,6 +23,16 @@ const DuckForm = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // --- Helper Functions --- //
+  const [{ loading, error }, submitForm] = useAxios(
+    {
+      url: "http://localhost:8000/ducks/add",
+      method: "POST",
+    },
+    {
+      manual: true,
+    }
+  );
+
   const handleCloseSuccessModal = () => setShowSuccessModal(false);
 
   const handleShowSuccessModal = () => setShowSuccessModal(true);
@@ -37,7 +47,7 @@ const DuckForm = () => {
     });
   };
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async (event) => {
     setIsLoading(true);
     event.preventDefault();
 
@@ -52,23 +62,24 @@ const DuckForm = () => {
 
     // SetTimeout used here just to show off the spinner :)
     setTimeout(() => {
-      axios
-        .post("http://localhost:8000/ducks/add", duckData)
-        .then((res) => {
-          handleShowSuccessModal();
-          resetState(defaultState);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          // TODO: Handle errors better
-          console.error(`Error: ${error}`);
-          setIsLoading(false);
-        });
+      submitForm({
+        data: {
+          ...duckData,
+        },
+      }).then((res) => {
+        handleShowSuccessModal();
+        resetState(defaultState);
+        setIsLoading(false);
+      });
     }, 1000);
   };
 
-  if (isLoading) {
+  if (loading || isLoading) {
     return <CustomSpinner />;
+  }
+
+  if (error) {
+    // Show the user a useful error message
   }
 
   return (
