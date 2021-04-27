@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import useAxios from "axios-hooks";
 import { Container } from "react-bootstrap";
 import MaterialTable from "material-table";
 import { tableIcons, columns, title, subtitle } from "./constants/constants";
@@ -9,40 +9,34 @@ import CustomSpinner from "../CustomSpinner/CustomSpinner";
 
 const DuckData = () => {
   // --- State Hooks --- //
-  const [state, setState] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [{ data, loading, error }] = useAxios("http://localhost:8000/ducks");
 
   useEffect(() => {
     setIsLoading(true);
     // SetTimeout used here just to show off the spinner :)
     setTimeout(() => {
-      axios
-        .get("http://localhost:8000/ducks")
-        .then((res) => {
-          setState([...res.data.reverse()]);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          // TODO: Handle error better
-          console.error(`Error: ${error}`);
-          setIsLoading(false);
-        });
+      setIsLoading(false);
     }, 1000);
   }, []);
 
-  if (isLoading) {
+  if (loading || isLoading) {
     return <CustomSpinner />;
+  }
+
+  if (error) {
+    // Show the user a useful error message
   }
 
   return (
     <>
       <Header title={title} subtitle={subtitle} />
       <Container>
-        {state.length > 0 && (
+        {data.length > 0 && (
           <MaterialTable
             title="Duck Feeding Stats"
             columns={columns}
-            data={state}
+            data={data.reverse()}
             icons={tableIcons}
           />
         )}
