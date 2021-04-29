@@ -1,15 +1,22 @@
-.spinner {
-  animation-name: spin;
-  animation-duration: 1000ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
 
-@keyframes spin {
-  from {
-    transform: rotate(360deg);
+  .spinner {
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
   }
-  to {
-    transform: rotate(0deg);
+
+  @keyframes spin {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
   }
 }
