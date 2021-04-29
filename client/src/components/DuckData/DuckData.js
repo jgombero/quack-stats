@@ -4,7 +4,6 @@ import { Container } from "react-bootstrap";
 import MaterialTable from "material-table";
 import { tableIcons, columns, title, subtitle } from "./constants/constants";
 import Header from "../Header/Header";
-import "../../styles/spinner.css";
 import CustomSpinner from "../CustomSpinner/CustomSpinner";
 
 const DuckData = () => {
