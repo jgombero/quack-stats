@@ -1,5 +1,4 @@
 import React from "react";
-import "../../styles/spinner.css";
 import { duckImage } from "./constants/constants";
 
 const CustomSpinner = () => {
