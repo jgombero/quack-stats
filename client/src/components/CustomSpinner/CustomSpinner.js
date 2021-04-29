@@ -3,9 +3,7 @@ import { duckImage } from "./constants/constants";
 
 const CustomSpinner = () => {
   return (
-    <div
-      style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "75vh" }}
-    >
+    <div className="spinner-container">
       <img alt="Rubber Duck" src={duckImage} className="spinner"></img>
     </div>
   );
